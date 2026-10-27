@@ -5,6 +5,9 @@ const tierLabel = e => e.tierNote || `Tier ${e.tier}`;
 const fitClass = f => f.startsWith("Very") || f.startsWith("Direct") ? "vh" : f === "High" ? "h" : f === "Medium-High" ? "mh" : f === "Medium" ? "m" : "l";
 const yearOf = e => +e.month.slice(0, 4);
 
+const compOf = id => (typeof COMP_EVENTS !== "undefined") && COMP_EVENTS.find(c => c.ids.includes(id));
+const pills = (a, cls = "") => `<div class="pills ${cls}">${a.map(x => `<span class="pill">${esc(x)}</span>`).join("")}</div>`;
+
 function render() {
   const q = state.q.toLowerCase();
   const list = EVENTS.filter(e =>
@@ -26,6 +29,11 @@ function render() {
           <div><dt>Recommended Participation Model</dt><dd>${esc(e.model)}</dd></div>
           <div class="wide"><dt>Featured Omada Solution &amp; Presentation Focus</dt><dd>${esc(e.focus)}</dd></div>
         </dl>
+        ${(c => c ? `<div class="comp-mini">
+          <div class="cm-head"><span>Competitors &amp; Ecosystem</span><span class="int ${c.lvl}">Competition: ${esc(c.intensity)}</span><a href="competitors.html">Details →</a></div>
+          <dl><div><dt>Competitors on the floor</dt>${pills(c.rivals, "rival")}</div>
+          <div><dt>Exhibitors / dealers / IT integrators</dt>${pills(c.verified)}</div></dl>
+        </div>` : "")(compOf(e.id))}
       </div>
     </article>`).join("") : `<p class="empty">No matching events found.</p>`;
 }
