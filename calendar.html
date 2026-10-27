@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Annual Calendar | TP-Link Omada Trade Show Strategy</title>
+<meta name="description" content="Annual calendar of 2026 Q4 and 2027 tourism, hospitality and technology trade shows, color-coded by participation tier.">
+<meta name="theme-color" content="#0a0e17">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%2307111f'/><path d='M7 12a13 13 0 0 1 18 0M10 16a8 8 0 0 1 12 0M13 20a3 3 0 0 1 6 0' stroke='%2322d3ee' stroke-width='2.4' fill='none' stroke-linecap='round'/><circle cx='16' cy='24' r='1.8' fill='%2322d3ee'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="nav" id="nav">
+  <a class="brand" href="index.html"><span class="brand-mark"></span>Omada <b>Trade Show Strategy</b></a>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+  <nav id="navLinks">
+    <a href="index.html#summary">Summary</a>
+    <a href="index.html#matrix">Event Matrix</a>
+    <a href="index.html#plans">Action Plan</a>
+    <a href="index.html#content">Content Strategy</a>
+    <a href="index.html#risk">Risk &amp; KPI</a>
+    <a href="calendar.html" class="nav-cal active">📅 Annual Calendar</a>
+  </nav>
+</header>
+
+<main id="top">
+<section class="hero small">
+  <div class="hero-glow"></div>
+  <div class="wrap">
+    <p class="eyebrow">Annual Calendar · 2026 Q4 – 2027</p>
+    <h1>When is <span class="grad">each event?</span></h1>
+    <p class="lead">All 20 events and field periods placed on the calendar and color-coded by participation tier. Events with only a month announced are shown as “date TBC”.</p>
+  </div>
+</section>
+
+<section class="sec cal-sec">
+  <div class="wrap">
+    <div class="toolbar">
+      <div class="chips" id="periodFilter">
+        <button class="chip active" data-period="q4">2026 Q4</button>
+        <button class="chip" data-period="2027">2027</button>
+        <button class="chip" data-period="all">Full overview</button>
+      </div>
+      <div class="chips" id="calTier">
+        <button class="chip active" data-tier="all">All tiers</button>
+        <button class="chip c1" data-tier="1">Tier 1</button>
+        <button class="chip c2" data-tier="2">Tier 2</button>
+        <button class="chip c3" data-tier="3">Tier 3</button>
+        <button class="chip c4" data-tier="4">Tier 4</button>
+      </div>
+    </div>
+
+    <div class="legend" id="legend"></div>
+
+    <div class="months" id="months"></div>
+  </div>
+</section>
+</main>
+
+<div class="modal" id="modal" hidden>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <button class="modal-x" id="modalX" aria-label="Close">✕</button>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>TP-Link Omada · 2026 Q4 and 2027 Trade Show Participation and Content Strategy Report</span>
+    <a href="index.html">← Back to report</a>
+  </div>
+</footer>
+<script src="events.js"></script>
+<script src="calendar.js"></script>
+</body>
+</html>
