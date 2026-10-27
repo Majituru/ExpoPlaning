@@ -4,6 +4,7 @@ Dark-themed, report-style static website (plain HTML/CSS/JS, no build step).
 
 - `index.html` – the report (summary, event matrix, action plan, content strategy, risk & KPI, sources)
 - `calendar.html` – annual calendar, events color-coded by tier (click an event for details)
+- `competitors.html` – competitor & ecosystem attendance per event (internal use only; site is set to noindex)
 - `events.js` – shared event data used by the matrix and the calendar
 
 ## Deploy on Vercel
