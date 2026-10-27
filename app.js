@@ -24,16 +24,14 @@ function render() {
           <span class="badge b${e.tier}">${esc(tierLabel(e))}</span>
         </div>
         <p class="loc">📍 ${esc(e.loc)}</p>
-        ${e.prevTier ? `<p class="tierchg"><b>Re-evaluated: Tier ${e.prevTier} → Tier ${e.tier}.</b> ${esc(e.tierWhy)} <em>Upgrade if:</em> ${esc(e.upgrade)}</p>` : ""}
         <dl>
           <div><dt>B2B Network Fit</dt><dd><span class="fit ${fitClass(e.fit)}">${esc(e.fit)}</span> ${esc(e.fitNote)}</dd></div>
           <div><dt>Recommended Participation Model</dt><dd>${esc(e.model)}</dd></div>
           <div class="wide"><dt>Featured Omada Solution &amp; Presentation Focus</dt><dd>${esc(e.focus)}</dd></div>
         </dl>
         ${(c => c ? `<div class="comp-mini">
-          <div class="cm-head"><span>Competitors &amp; Ecosystem</span><span class="int u">${c.rivals.length ? "Confirmed" : "None confirmed yet"}</span><a href="competitors.html">Details →</a></div>
-          ${c.confirmed.length ? `<ul class="facts">${c.confirmed.slice(0, 2).map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : `<p class="none">Not yet checked in public sources.</p>`}
-          <dl><div><dt>Claimed in source report · unconfirmed</dt>${pills([...c.claimed.rivals, ...c.claimed.exhibitors], "claimed")}</div></dl>
+          <div class="cm-head"><span>Participants &amp; Sponsors</span><a href="competitors.html">Details →</a></div>
+          ${pills(c.items.map(x => x.n))}
         </div>` : "")(compOf(e.id))}
       </div>
     </article>`).join("") : `<p class="empty">No matching events found.</p>`;

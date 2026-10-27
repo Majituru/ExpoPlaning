@@ -272,3 +272,4 @@ nav a.active-link{color:var(--text);background:var(--panel)}
 .tier small{color:var(--muted)}
 .mx.rev .badge{white-space:nowrap;display:inline-block}
 .mx.rev td:nth-child(2),.mx.rev td:nth-child(3){white-space:nowrap}
+.pill i{font-style:normal;color:var(--muted);font-size:12px}
