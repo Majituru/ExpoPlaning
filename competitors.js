@@ -32,7 +32,7 @@ const COMP_EVENTS = [
       "estimate": "High"
     },
     "form": "Shown as “recommended AP / PoE switch” on POS vendors’ and IT distributors’ booths.",
-    "take": "Mostly a HoReCa equipment audience. No network-vendor exhibitor is confirmed, and the earlier listed names were not found on their own sites. Re-check the Tier 1 fit and the official exhibitor list before committing booth budget."
+    "take": "Mostly a HoReCa equipment audience. No network-vendor exhibitor is confirmed, and the earlier listed names were not found on their own sites. Moved from Tier 1 to Tier 3 in the re-evaluation; check the official exhibitor list before spending more."
   },
   {
     "ids": [

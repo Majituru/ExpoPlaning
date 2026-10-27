@@ -24,6 +24,7 @@ function render() {
           <span class="badge b${e.tier}">${esc(tierLabel(e))}</span>
         </div>
         <p class="loc">📍 ${esc(e.loc)}</p>
+        ${e.prevTier ? `<p class="tierchg"><b>Re-evaluated: Tier ${e.prevTier} → Tier ${e.tier}.</b> ${esc(e.tierWhy)} <em>Upgrade if:</em> ${esc(e.upgrade)}</p>` : ""}
         <dl>
           <div><dt>B2B Network Fit</dt><dd><span class="fit ${fitClass(e.fit)}">${esc(e.fit)}</span> ${esc(e.fitNote)}</dd></div>
           <div><dt>Recommended Participation Model</dt><dd>${esc(e.model)}</dd></div>
