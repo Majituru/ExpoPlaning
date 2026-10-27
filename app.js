@@ -30,9 +30,9 @@ function render() {
           <div class="wide"><dt>Featured Omada Solution &amp; Presentation Focus</dt><dd>${esc(e.focus)}</dd></div>
         </dl>
         ${(c => c ? `<div class="comp-mini">
-          <div class="cm-head"><span>Competitors &amp; Ecosystem</span><span class="int ${c.lvl}">Competition: ${esc(c.intensity)}</span><a href="competitors.html">Details →</a></div>
-          <dl><div><dt>Competitors on the floor</dt>${pills(c.rivals, "rival")}</div>
-          <div><dt>Exhibitors / dealers / IT integrators</dt>${pills(c.verified)}</div></dl>
+          <div class="cm-head"><span>Competitors &amp; Ecosystem</span><span class="int u">${c.rivals.length ? "Confirmed" : "None confirmed yet"}</span><a href="competitors.html">Details →</a></div>
+          ${c.confirmed.length ? `<ul class="facts">${c.confirmed.slice(0, 2).map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : `<p class="none">Not yet checked in public sources.</p>`}
+          <dl><div><dt>Claimed in source report · unconfirmed</dt>${pills([...c.claimed.rivals, ...c.claimed.exhibitors], "claimed")}</div></dl>
         </div>` : "")(compOf(e.id))}
       </div>
     </article>`).join("") : `<p class="empty">No matching events found.</p>`;

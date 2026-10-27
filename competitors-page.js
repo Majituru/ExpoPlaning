@@ -4,21 +4,25 @@ const tierOf = id => EVENTS.find(e => e.id === id);
 const tierName = e => e.tierNote || `Tier ${e.tier}`;
 
 function renderList(f) {
-  const list = COMP_EVENTS.filter(c => f === "all" || (f === "hi" ? ["vh", "h"].includes(c.lvl) : ["l", "vl"].includes(c.lvl)));
+  const list = COMP_EVENTS.filter(c => f === "all" || (f === "part" ? c.confirmed.length : !c.confirmed.length));
   $("#compList").innerHTML = list.map(c => {
     const t = tierOf(c.ids[0]);
     const badges = [...new Set(c.ids.map(i => tierName(tierOf(i))))].map(n => `<span class="badge b${n.slice(5, 6)}">${esc(n)}</span>`).join("");
-    const pills = a => a.map(x => `<span class="pill">${esc(x)}</span>`).join("");
+    const pills = (a, cls = "") => `<div class="pills ${cls}">${a.map(x => `<span class="pill">${esc(x)}</span>`).join("")}</div>`;
+    const conf = c.confirmed.length
+      ? `<ul class="facts">${c.confirmed.map(x => `<li>${esc(x)}</li>`).join("")}</ul>`
+      : `<p class="none">Not yet checked in public sources.</p>`;
     return `<article class="comp t${t.tier}">
       <div class="comp-head">
         <div><h4>${esc(c.name)}</h4><p class="loc">📅 ${esc(c.when)}</p></div>
-        <div class="comp-tags">${badges}<span class="int ${c.lvl}">Competition: ${esc(c.intensity)}</span></div>
+        <div class="comp-tags">${badges}<span class="int u">Competitors: ${c.rivals.length ? "confirmed" : "none confirmed"}</span></div>
       </div>
       <div class="comp-grid">
-        <div><dt>Verified exhibitors / sponsors</dt><div class="pills">${pills(c.verified)}</div></div>
-        <div><dt>Competitors on the floor</dt><div class="pills rival">${pills(c.rivals)}</div></div>
+        <div><dt>Confirmed from public sources</dt>${conf}</div>
+        <div><dt>Competitor exhibitors confirmed</dt>${c.rivals.length ? pills(c.rivals, "rival") : `<p class="none">None confirmed yet.</p>`}
+          <dt class="gap">Claimed in source report · <b>unconfirmed</b> · estimate: ${esc(c.claimed.estimate)}</dt>
+          ${pills([...c.claimed.rivals, ...c.claimed.exhibitors], "claimed")}</div>
       </div>
-      <p class="form"><b>How they show up:</b> ${esc(c.form)}</p>
       <p class="take"><b>For Omada:</b> ${esc(c.take)}</p>
     </article>`;
   }).join("");
